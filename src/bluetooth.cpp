@@ -28,7 +28,7 @@ class MyAdvertisedDeviceCallbacks: public BLEAdvertisedDeviceCallbacks {
     }
 };
 
-bool enviaBT(){
+bool sendBT(){
   if (bitRead(bikeDataChanged,15)){
     DEBUG_BT_PRINTLN("DIST CHG");
     pCharDistance->writeValue(bikeDistance, 1);
@@ -37,7 +37,7 @@ bool enviaBT(){
   return true;
 }
 
-void conectaBT(){
+void connectBT(){
   DEBUG_BT_PRINTLN("BT try to create client");
   pClient  = BLEDevice::createClient();
   DEBUG_BT_PRINTLN("BT client created");

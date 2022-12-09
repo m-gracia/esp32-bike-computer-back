@@ -2,29 +2,30 @@
 #include "my_def.h"
 #include "my_debug.h"
 
-void consultaDistancia(){
-  int tiempoEcho;
+void getDistance(){
+  int timeEcho;
   unsigned char tbikeDistance;
+  unsigned char distanceEcho;   // Distance measured
 
   digitalWrite(DIST_PIN_TRIGG,LOW);
   delayMicroseconds(2);
   
-  digitalWrite(DIST_PIN_TRIGG,HIGH); // Throw trigger
+  digitalWrite(DIST_PIN_TRIGG,HIGH);  // Throw trigger
   delayMicroseconds(20);  
   digitalWrite(DIST_PIN_TRIGG,LOW);
-  tiempoEcho=pulseIn(DIST_PIN_ECHO,HIGH,14790); //14790us = 255cm
+  timeEcho=pulseIn(DIST_PIN_ECHO,HIGH,14790); //14790us = 255cm
 
-  if (tiempoEcho == 0) distanciaEcho = 255;
-  else distanciaEcho=tiempoEcho/58;
+  if (timeEcho == 0) distanceEcho = 255;
+  else distanceEcho=timeEcho/58;
 
   DEBUG_SENSOR_PRINT("Distance: ");
-  DEBUG_SENSOR_PRINTLN(distanciaEcho);
+  DEBUG_SENSOR_PRINTLN(distanceEcho);
 
-  if (distanciaEcho < distanciaMostrar1) tbikeDistance = 5;      // Closest
-  else if (distanciaEcho < distanciaMostrar2) tbikeDistance = 4; 
-  else if (distanciaEcho < distanciaMostrar3) tbikeDistance = 3;
-  else if (distanciaEcho < distanciaMostrar4) tbikeDistance = 2;
-  else if (distanciaEcho < distanciaMostrar) tbikeDistance = 1;  // Farthest
+  if (distanceEcho < distanceMark1) tbikeDistance = 5;      // Closest
+  else if (distanceEcho < distanceMark2) tbikeDistance = 4; 
+  else if (distanceEcho < distanceMark3) tbikeDistance = 3;
+  else if (distanceEcho < distanceMark4) tbikeDistance = 2;
+  else if (distanceEcho < distanceMark) tbikeDistance = 1;  // Farthest
   else tbikeDistance = STATUS_OK; // No detection or too far
   
   DEBUG_SENSOR_PRINT("Distance mark: ");

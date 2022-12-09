@@ -8,8 +8,8 @@
 // TASKS ON CORE 0 //
 void loopOthers (void * parameter){
 for(;;) {
-  consultaDistancia();
-  delay(250); //Para alimentar el WDog.
+  getDistance();
+  delay(250); //Food for the WatchDog.
 }
 }
 // -------------- //
@@ -21,7 +21,7 @@ void setup() {
   #endif
   DEBUG_PRINTLN("Manuel Gracia.Nov-2022");
   DEBUG_PRINTLN("https://github.com/m-gracia");
-  DEBUG_PRINTLN("esp32-bike-computer_20221104");
+  DEBUG_PRINTLN("esp32-bike-computer-back_20221209");
   
   // Ultrasonic 
   pinMode(DIST_PIN_TRIGG,OUTPUT);
@@ -44,11 +44,11 @@ void setup() {
 void loop() {
   if (bikeBT == STATUS_OK){
     if (bikeDataChanged != 0){
-      if (enviaBT()){ bikeDataChanged=0; DEBUG_BT_PRINTLN("BT SENT");}
+      if (sendBT()){ bikeDataChanged=0; DEBUG_BT_PRINTLN("BT SENT");}
     }
   } else if (bikeBT == STATUS_WARN){
     DEBUG_BT_PRINTLN("BT WARNING. Connecting");
-    conectaBT();
+    connectBT();
   } else if (timerBT < millis()){
     timerBT = millis() + 5000; // 5sec
     DEBUG_BT_PRINTLN("BT CRIT. Initalyzinng");

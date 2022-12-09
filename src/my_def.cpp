@@ -7,8 +7,6 @@ BLERemoteService* pRemoteService = NULL;
 BLERemoteCharacteristic* pCharDistance = NULL;
 BLEScan* pBLEScan = NULL;
 
-unsigned char distanciaEcho = 255;
-
 unsigned char bikeBT = STATUS_UNK;
 unsigned char bikeDistance = STATUS_OK;
 

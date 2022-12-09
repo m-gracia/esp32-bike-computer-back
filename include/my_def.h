@@ -25,12 +25,11 @@ extern BLEScan* pBLEScan;
 #define DIST_PIN_TRIGG 17   // USonic Trigger pin
 #define DIST_PIN_ECHO 16    // USonic Echo pin
 // Distance marks for showing bars
-static unsigned char distanciaMostrar = 100;    // Detected mark
-static unsigned char distanciaMostrar1 = 30;    // Closest mark
-static unsigned char distanciaMostrar2 = 50;    // Close mark
-static unsigned char distanciaMostrar3 = 70;    // Far mark
-static unsigned char distanciaMostrar4 = 100;   // Farthest mark
-extern unsigned char distanciaEcho;             // Distance measured data
+static unsigned char distanceMark = 100;    // Detected mark
+static unsigned char distanceMark1 = 30;    // Closest mark
+static unsigned char distanceMark2 = 50;    // Close mark
+static unsigned char distanceMark3 = 70;    // Far mark
+static unsigned char distanceMark4 = 100;   // Farthest mark
 
 //Status IDs
 #define STATUS_UNK 8        // Unknown
@@ -39,7 +38,7 @@ extern unsigned char distanciaEcho;             // Distance measured data
 #define STATUS_OK 0         // OK
 
 //Status variables
-extern unsigned char bikeBT;         // Bluetooth Status
+extern unsigned char bikeBT;        // Bluetooth Status
 extern unsigned char bikeDistance;  // Distance Status
 
 /* To show changes on LCD's
@@ -66,7 +65,7 @@ extern unsigned long bikeDataChanged;
 // Run timers
 extern unsigned long timerBT;
 
-// Tareas
+// Task
 extern TaskHandle_t T_loopOthers;
 
 #endif  // _MY_DEF_H_
