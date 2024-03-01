@@ -2,21 +2,20 @@
 #include "my_def.h"
 #include "my_debug.h"
 
+void initDistance(){
+  if(!tofDev.begin()) DEBUG_SENSOR_PRINTLN("Sensor init failed. Not found");
+  else DEBUG_SENSOR_PRINTLN("Sensor init OK");
+}
+
 void getDistance(){
-  int timeEcho;
+  VL53L0X_RangingMeasurementData_t measure;
+  unsigned char distanceEcho;   // Distance measured in cm
   unsigned char tbikeDistance;
-  unsigned char distanceEcho;   // Distance measured
-
-  digitalWrite(DIST_PIN_TRIGG,LOW);
-  delayMicroseconds(2);
   
-  digitalWrite(DIST_PIN_TRIGG,HIGH);  // Throw trigger
-  delayMicroseconds(20);  
-  digitalWrite(DIST_PIN_TRIGG,LOW);
-  timeEcho=pulseIn(DIST_PIN_ECHO,HIGH,14790); //14790us = 255cm
+  tofDev.rangingTest(&measure, false); // pass in 'true' to get debug data printout!
 
-  if (timeEcho == 0) distanceEcho = 255;
-  else distanceEcho=timeEcho/58;
+  if (measure.RangeStatus != 4) distanceEcho = measure.RangeMilliMeter/10;
+  else distanceEcho = 255;
 
   DEBUG_SENSOR_PRINT("Distance: ");
   DEBUG_SENSOR_PRINTLN(distanceEcho);
@@ -34,5 +33,7 @@ void getDistance(){
   if (tbikeDistance != bikeDistance){
     bitSet(bikeDataChanged,15);
     bikeDistance = tbikeDistance;
-  }  
+  }
+
+  delay(100);  // This is a waste of time
 }

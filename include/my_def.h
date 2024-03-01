@@ -21,9 +21,10 @@ extern BLERemoteService* pRemoteService;
 extern BLERemoteCharacteristic* pCharDistance;
 extern BLEScan* pBLEScan;
 
-// Ultrasonic HC-SR04
-#define DIST_PIN_TRIGG 17   // USonic Trigger pin
-#define DIST_PIN_ECHO 16    // USonic Echo pin
+// ToF VL53L0X sensor
+#include "Adafruit_VL53L0X.h"
+static Adafruit_VL53L0X tofDev = Adafruit_VL53L0X();
+
 // Distance marks for showing bars
 static unsigned char distanceMark = 100;    // Detected mark
 static unsigned char distanceMark1 = 30;    // Closest mark
