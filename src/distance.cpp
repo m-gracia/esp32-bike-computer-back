@@ -3,7 +3,9 @@
 #include "my_debug.h"
 
 void initDistance(){
-  if(!tofDev.begin()) DEBUG_SENSOR_PRINTLN("Sensor init failed. Not found");
+  if (!Wire.setPins(I2C_SDA, I2C_SCL)) DEBUG_SENSOR_PRINTLN("I2C init failed");
+  else if(!tofDev.begin()) DEBUG_SENSOR_PRINTLN("Sensor init failed. Not found");
+  else if(!tofDev.configSensor(TOF_SENSE)) DEBUG_SENSOR_PRINTLN("Sensor config failed");
   else DEBUG_SENSOR_PRINTLN("Sensor init OK");
 }
 

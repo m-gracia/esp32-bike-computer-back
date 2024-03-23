@@ -23,6 +23,13 @@ extern BLEScan* pBLEScan;
 
 // ToF VL53L0X sensor
 #include "Adafruit_VL53L0X.h"
+#define I2C_SDA 9
+#define I2C_SCL 10
+// VL53L0X configuration. Choose only one
+// #define TOF_SENSE Adafruit_VL53L0X::VL53L0X_SENSE_DEFAULT
+// #define TOF_SENSE Adafruit_VL53L0X::VL53L0X_SENSE_LONG_RANGE
+// #define TOF_SENSE Adafruit_VL53L0X::VL53L0X_SENSE_HIGH_SPEED
+#define TOF_SENSE Adafruit_VL53L0X::VL53L0X_SENSE_HIGH_ACCURACY
 static Adafruit_VL53L0X tofDev = Adafruit_VL53L0X();
 
 // Distance marks for showing bars
