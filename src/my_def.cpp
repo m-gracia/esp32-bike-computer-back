@@ -13,5 +13,6 @@ unsigned char bikeDistance = STATUS_OK;
 unsigned long bikeDataChanged = 0xFFFFFFFF;
 
 unsigned long timerBT = millis() + 10000;
+unsigned long timerDistance = millis();
 
 TaskHandle_t T_loopOthers = NULL;

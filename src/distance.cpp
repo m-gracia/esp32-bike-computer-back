@@ -18,6 +18,7 @@ void getDistance(){
 
   if (measure.RangeStatus != 4) distanceEcho = measure.RangeMilliMeter/10;
   else distanceEcho = 255;
+  if (distanceEcho == 0) distanceEcho = 255; // Sometimes it report a false 0mm distance
 
   DEBUG_SENSOR_PRINT("Distance: ");
   DEBUG_SENSOR_PRINTLN(distanceEcho);
@@ -36,6 +37,4 @@ void getDistance(){
     bitSet(bikeDataChanged,15);
     bikeDistance = tbikeDistance;
   }
-
-  delay(100);  // This is a waste of time
 }

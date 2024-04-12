@@ -8,9 +8,9 @@ void setup() {
   #ifdef DEBUG
     Serial.begin(115200);
   #endif
-  DEBUG_PRINTLN("Manuel Gracia.Nov-2022");
+  DEBUG_PRINTLN("Manuel Gracia.Apr-2024");
   DEBUG_PRINTLN("https://github.com/m-gracia");
-  DEBUG_PRINTLN("esp32-bike-computer-back_20240301");
+  DEBUG_PRINTLN("esp32-bike-computer-back_20240412");
   
   initDistance();
   initBT();
@@ -19,7 +19,10 @@ void setup() {
 }
 
 void loop() {
-  getDistance();
+  if (timerDistance < millis()){
+    getDistance();
+    timerDistance = millis() + 200; // 200ms
+  }
   
   if (bikeBT == STATUS_OK){
     if (bikeDataChanged != 0){

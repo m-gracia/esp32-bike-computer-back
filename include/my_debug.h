@@ -8,7 +8,7 @@
 
 // Uncomment to enable
 #define DEBUG_BT
-//#define DEBUG_SENSOR //Ultrasonic distance sensor
+#define DEBUG_SENSOR //Tof distance sensor
 
 
 

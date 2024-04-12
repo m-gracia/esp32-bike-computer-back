@@ -72,6 +72,7 @@ extern unsigned long bikeDataChanged;
 
 // Run timers
 extern unsigned long timerBT;
+extern unsigned long timerDistance;
 
 // Task
 extern TaskHandle_t T_loopOthers;
