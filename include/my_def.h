@@ -34,9 +34,9 @@ static Adafruit_VL53L0X tofDev = Adafruit_VL53L0X();
 
 // Distance marks for showing bars
 static unsigned char distanceMark = 100;    // Detected mark
-static unsigned char distanceMark1 = 30;    // Closest mark
-static unsigned char distanceMark2 = 50;    // Close mark
-static unsigned char distanceMark3 = 70;    // Far mark
+static unsigned char distanceMark1 = 40;    // Closest mark
+static unsigned char distanceMark2 = 60;    // Close mark
+static unsigned char distanceMark3 = 80;    // Far mark
 static unsigned char distanceMark4 = 100;   // Farthest mark
 
 //Status IDs
