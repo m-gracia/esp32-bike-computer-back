@@ -30,6 +30,7 @@ extern BLEScan* pBLEScan;
 // #define TOF_SENSE Adafruit_VL53L0X::VL53L0X_SENSE_LONG_RANGE
 // #define TOF_SENSE Adafruit_VL53L0X::VL53L0X_SENSE_HIGH_SPEED
 #define TOF_SENSE Adafruit_VL53L0X::VL53L0X_SENSE_HIGH_ACCURACY
+#define TOF_PERIOD 200 // Measure period (ms)
 static Adafruit_VL53L0X tofDev = Adafruit_VL53L0X();
 
 // Distance marks for showing bars

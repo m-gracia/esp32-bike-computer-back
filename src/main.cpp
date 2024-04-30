@@ -10,7 +10,7 @@ void setup() {
   #endif
   DEBUG_PRINTLN("Manuel Gracia.Apr-2024");
   DEBUG_PRINTLN("https://github.com/m-gracia");
-  DEBUG_PRINTLN("esp32-bike-computer-back_20240412");
+  DEBUG_PRINTLN("esp32-bike-computer-back_20240429");
   
   initDistance();
   initBT();
