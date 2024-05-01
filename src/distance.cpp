@@ -15,10 +15,10 @@ void getDistance(){
   unsigned char distanceEcho;   // Distance measured in cm
   unsigned char tbikeDistance;
 
-  tofDev.startRange();
+  tofDev.rangingTest(&measure, false); // pass in 'true' to get debug data printout
 
-  if (tofDev.readRangeStatus() == VL53L0X_ERROR_NONE) 
-    distanceEcho = tofDev.readRangeResult()/10;
+  if (tofDev.readRangeStatus() == VL53L0X_ERROR_NONE && measure.RangeStatus != 4) 
+    distanceEcho = measure.RangeMilliMeter/10;
   else 
     distanceEcho = 255;
   if (distanceEcho == 0) distanceEcho = 255; // Sometimes it report a false 0mm distance
